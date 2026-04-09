@@ -72,7 +72,7 @@ export default function CTASection() {
 
                   <div className="mt-6 flex flex-wrap items-center gap-3 md:gap-4">
                     <a
-                      href="https://unstop.com"
+                      href="https://innovateiterateinterrupt-iii-5.devfolio.co/overview"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold text-white text-lg md:text-xl transition-all duration-200 hover:scale-105"

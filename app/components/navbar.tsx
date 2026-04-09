@@ -45,7 +45,6 @@ export default function Navbar() {
             { label: 'About', id: 'about' },
             { label: 'Details', id: 'details' },
             { label: 'Prizes', id: 'prizes' },
-            { label: 'Tracks', id: 'tracks' },
             { label: 'Timeline', id: 'timeline' },
           ].map((item) => (
             <button
@@ -59,7 +58,7 @@ export default function Navbar() {
         </div>
 
         <a
-          href="https://unstop.com"
+          href="https://innovateiterateinterrupt-iii-5.devfolio.co/overview"
           target="_blank"
           rel="noopener noreferrer"
           className="px-5 py-2 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:scale-105"

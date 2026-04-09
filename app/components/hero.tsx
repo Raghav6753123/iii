@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import Image from 'next/image';
 import { Calendar, Clock, MapPin, Users } from 'lucide-react';
 import gravityLogo from '../gravity-logo.png';
@@ -37,6 +38,17 @@ export default function HeroSection() {
     return () => clearTimeout(t);
   }, []);
 
+  const mobileStars = useMemo(
+    () =>
+      Array.from({ length: 15 }, (_, i) => ({
+        top: `${(i * 37) % 100}%`,
+        left: `${(i * 61 + 13) % 100}%`,
+        animationDelay: `${(i % 6) * 0.45}s`,
+        animationDuration: `${2 + (i % 4) * 0.5}s`,
+        opacity: 0.35 + (i % 5) * 0.08,
+      })),
+    []
+  );
   const stats = [
     { icon: Calendar, label: 'Date', value: 'Apr 11–12, 2026' },
     { icon: Clock, label: 'Duration', value: '24 Hours' },
@@ -70,17 +82,11 @@ export default function HeroSection() {
             style={{ animationDelay: '4s' }}
           />
           {/* Lightweight particle stars */}
-          {[...Array(15)].map((_, i) => (
+          {mobileStars.map((star, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
-                opacity: 0.3 + Math.random() * 0.4,
-              }}
+              style={star}
             />
           ))}
         </div>
@@ -146,7 +152,7 @@ export default function HeroSection() {
 
         <div className="flex flex-wrap gap-4 mt-4 justify-center">
           <a
-            href="https://unstop.com"
+            href="https://innovateiterateinterrupt-iii-5.devfolio.co/overview"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3 rounded-full font-semibold text-white text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg"

@@ -11,13 +11,17 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
+    let completeTimer: ReturnType<typeof setTimeout> | undefined;
+
     const showTimer = setTimeout(() => {
       setFadeOut(true);
-      const completeTimer = setTimeout(onComplete, 450);
-      return () => clearTimeout(completeTimer);
+      completeTimer = setTimeout(onComplete, 450);
     }, 3000);
 
-    return () => clearTimeout(showTimer);
+    return () => {
+      clearTimeout(showTimer);
+      if (completeTimer) clearTimeout(completeTimer);
+    };
   }, [onComplete]);
 
   return (
