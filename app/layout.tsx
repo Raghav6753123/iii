@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { BackgroundRippleEffect } from "./components/Background";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,11 +13,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className="dark h-full antialiased" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <div className="fixed inset-0 z-0">
+          <BackgroundRippleEffect />
+        </div>
+        <div className="relative z-10 flex min-h-full flex-col">{children}</div>
+      </body>
     </html>
   );
 }
